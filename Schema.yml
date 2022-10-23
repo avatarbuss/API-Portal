@@ -1,0 +1,43 @@
+user.mail:
+ type: config_object
+ label: 'Email settings'
+ mapping:
+  cancel_confirm:
+    type: mail
+    label: 'Account cancellation confirmation'
+  password_reset:
+    type: mail
+    label: 'Password recovery'
+  [....]
+  
+config_object:
+  type: mapping
+  mapping:
+    langcode:
+      type: string
+      label: 'Language code'
+    _core:
+      type: _core_config_info
+
+config_entity:
+  type: mapping
+  mapping:
+    uuid:
+      type: string
+      label: 'UUID'
+    langcode:
+      type: string
+      label: 'Language code'
+    status:
+      type: boolean
+      label: 'Status'
+    dependencies:
+      type: config_dependencies
+      label: 'Dependencies'
+    third_party_settings:
+      type: sequence
+      label: 'Third party settings'
+      sequence:
+        type: '[%parent.%parent.%type].third_party.[%key]'
+    _core:
+      type: _core_config_info
